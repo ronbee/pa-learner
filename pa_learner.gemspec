@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "pa_learner"
   s.version     = PaLearner::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["ron.begleiter"]
-  s.email       = ["ron.begleiter@kontera.com"]
+  s.authors     = ["ronbee"]
+  s.email       = ["zzz@zz.com"]
   s.homepage    = ""
   s.summary     = %q{Implementing Online Passive-Aggressive Algorithms}
   s.description = %q{Passive-Aggressive algorithms are a family of online margin based linear lerners. For further details see: 'Online Passive-Aggressive Algorithms' by Crammer et al. JMLR, 2006.}
