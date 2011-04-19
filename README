@@ -1,0 +1,22 @@
+Implementing Online Passive-Aggressive Algorithms
+-----------------------------------------------------------------------------
+Passive-Aggressive algorithms are a family of online margin based linear lerners. For further details see: 'Online Passive-Aggressive Algorithms' by Crammer et al. JMLR, 2006.
+
+Usage example:
+-----------------------
+
+    d = [0.25, 0.75]             # this distribution we should learn
+    data = Array.new(100)   # init "random" data
+    (0..data.size).each do |i|
+      x_1 = rand
+      x_2 = 1 - x_1
+      data[i] = {:y=>d[0]*x_1+d[1]*x_2 , :x=>[x_1, x_2]}
+    end
+   
+   
+    pal = PaLearner::DistRegressor.new( 2 )   # init pa-learner in 2-dim
+
+    data.shuffle.inject(pal) { |pal, yx| pal.update!(yx[:x], yx[:y]); pal; }   # pa-learner observes vectors (x, y) in data   
+
+    puts "pal.estimate([1,0]) = #{pal.estimate( [1, 0] )}"   # then pa-learner estimates vectors (1, 0) and (0, 1) -- we expect it should learn d=(0,25, 0.75)
+    puts "pal.estimate([0,1]) = #{pal.estimate( [0, 1] )}"   #
