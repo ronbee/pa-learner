@@ -6,16 +6,22 @@ Implementation of a ``Passive-Aggressive'' online learning algorithm. The Passiv
 #The how?
 
 ##Usage
->x is a vector (Array) of dim elements
+>x is a vector (Array) of dim elements over real-numbers
 >y is its corresponding value (label -or- functional value)
 ###Init
->pal = PaLearner::DistRegressor.new( dim )
+> pal_dist = PaLearner::DistRegressor.new( dim ) # for learning a distribution over instances { x }
+
+> pal_classifier = PaLearner::PA.new( dim, op_pa_type, op_cost) # optionals: op_pa_type in [ :pa, :pa_I, :pa_II ] ; op_cost a real number.
+
 ###Update
 >pal.update!(x, y)
 ###Estimate
->pal.estimate( x ) 
-
+>pal.estimate( x ) # real value (the magnitude is a proxy for the classification confidence)
+>pal.bin_classify( x )  # binary classification: { -1, 1 }
 ##Examples
+
+See, test/pa_learner_test.rb for more examples.
+
 >d = [0.25, 0.75]
 >@data = Array.new(100)
 >(0..@data.size).each do |i|
