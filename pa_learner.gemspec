@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["ronbee"]
   s.email       = ["ronbee.github@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/ronbee"
   s.summary     = %q{Implementing Online Passive-Aggressive Algorithms}
   s.description = %q{Passive-Aggressive algorithms are a family of online margin based linear lerners. For further details see: 'Online Passive-Aggressive Algorithms' by Crammer et al. JMLR, 2006.}
 
