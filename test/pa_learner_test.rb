@@ -29,21 +29,21 @@ class MatchTest < MiniTest::Unit::TestCase
   def test_sanity_classify_pa_0
     pal = PaLearner::PA.new( 2 )
     @data.shuffle.inject(pal) { |pal, yx| pal.update!(yx[:x], yx[:y]>=0 ? 1 : -1); pal; }
-    err_rate = ( @data.inject(sum) {|errs,yx| errs += 1 unless pal.bin_classify(yx[:x]) == yx[:y]; errs } ) / @data.size.to_f
-    assert( err_rate < 0.01, "PA-0 error rate is too high: #{err_rate}" )
+    err_rate = ( @data.inject(0) {|errs,yx| errs += 1 unless pal.bin_classify(yx[:x]) == (yx[:y]>=0 ? 1 : -1); errs } ) / @data.size.to_f
+    assert( err_rate < 0.0001, "PA-0 error rate is too high: #{err_rate}" )
   end
   
   def test_sanity_classify_pa_I
     pal = PaLearner::PA.new( 2, :pa_I, 10 )
     @data.shuffle.inject(pal) { |pal, yx| pal.update!(yx[:x], yx[:y]>=0 ? 1 : -1); pal; }
-    err_rate = ( @data.inject(sum) {|errs,yx| errs += 1 unless pal.bin_classify(yx[:x]) == yx[:y]; errs } ) / @data.size.to_f
-    assert( err_rate < 0.01, "PA-I error rate is too high: #{err_rate}" )
+    err_rate = ( @data.inject(0) {|errs,yx| errs += 1 unless pal.bin_classify(yx[:x]) == (yx[:y]>=0 ? 1 : -1); errs } ) / @data.size.to_f
+    assert( err_rate < 0.0001, "PA-I error rate is too high: #{err_rate}" )
   end
   
   def test_sanity_classify_pa_II
     pal = PaLearner::PA.new( 2, :pa_II, 10 )
     @data.shuffle.inject(pal) { |pal, yx| pal.update!(yx[:x], yx[:y]>=0 ? 1 : -1); pal; }
-    err_rate = ( @data.inject(sum) {|errs,yx| errs += 1 unless pal.bin_classify(yx[:x]) == yx[:y]; errs } ) / @data.size.to_f
-    assert( err_rate < 0.01, "PA-II error rate is too high: #{err_rate}" )
+    err_rate = ( @data.inject(0) {|errs,yx| errs += 1 unless pal.bin_classify(yx[:x]) == (yx[:y]>=0 ? 1 : -1); errs } ) / @data.size.to_f
+    assert( err_rate < 0.0001, "PA-II error rate is too high: #{err_rate}" )
   end
 end
