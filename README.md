@@ -17,6 +17,7 @@ Implementation of a ``Passive-Aggressive'' online learning algorithm. The Passiv
 >pal.update!(x, y)
 ###Estimate
 >pal.estimate( x ) # real value (the magnitude is a proxy for the classification confidence)
+###Classify (Currently binary labels)
 >pal.bin_classify( x )  # binary classification: { -1, 1 }
 ##Examples
 
@@ -34,9 +35,11 @@ See, test/pa_learner_test.rb for more examples.
 >pal = PaLearner::DistRegressor.new( 2 )
 >
 >@data.shuffle.inject(pal) { |pal, yx| pal.update!(yx[:x], yx[:y]); pal; }
+>
 >@data.shuffle.inject(pal) { |pal, yx| pal.update!(yx[:x], yx[:y]); pal; }
 >
 >puts "pal.estimate([1,0]) = #{pal.estimate( [1, 0] )}"
+>
 >puts "pal.estimate([0,1]) = #{pal.estimate( [0, 1] )}"
 
 #License
