@@ -1,3 +1,8 @@
+#Basics
+ >:> gem install pa_learner
+ 
+ >irb:> require "pa_learner"
+ 
 #The what?
 Online learning algorithm: Lightweight, that-works
  
