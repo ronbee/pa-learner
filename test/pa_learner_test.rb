@@ -1,6 +1,8 @@
 require 'minitest/unit'
-
+ 
+# using guard 
 require File.dirname(__FILE__) + '/../lib/pa_learner'
+require File.dirname(__FILE__) + '/../lib/sparse_vs'
 
 class MatchTest < MiniTest::Unit::TestCase
 
@@ -46,4 +48,9 @@ class MatchTest < MiniTest::Unit::TestCase
     err_rate = ( @data.inject(0) {|errs,yx| errs += 1 unless pal.bin_classify(yx[:x]) == (yx[:y]>=0 ? 1 : -1); errs } ) / @data.size.to_f
     assert( err_rate < 0.0001, "PA-II error rate is too high: #{err_rate}" )
   end
+
+  def test_sprase_vs_basic
+    x1 = PaLearner::SparseVect.new( { "1" => 1, "2" => 2, "4" => 4} )
+  end
+
 end
